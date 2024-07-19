@@ -1,0 +1,17 @@
+services:
+  tg-service:
+    container_name: tg-container
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: tg-dev:v1.0
+    volumes:
+      - ..:/workspaces:cached
+      - ../src/trex_cfg.yaml:/etc/trex_cfg.yaml
+      - /sys/bus/pci/drivers:/sys/bus/pci/drivers 
+      - /sys/kernel/mm/hugepages:/sys/kernel/mm/hugepages
+      - /sys/devices/system/node:/sys/devices/system/node 
+      - /dev:/dev
+      - /lib/modules:/lib/modules
+    command: sleep infinity
+    privileged: true
