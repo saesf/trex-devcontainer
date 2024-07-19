@@ -1,0 +1,17 @@
+#refer to https://trex-tgn.cisco.com/trex/doc/trex_manual.html#_basic_configuration for more info
+- port_limit      : 2
+  version: 2
+  #List of interfaces. Change according to your setup. Use ./dpdk_setup_ports.py -s to see available options.
+  interfaces    : ["01:00.0", "dummy"]  #1
+  limit_memory    : 1024
+  prefix          : setup1
+  c               : 2
+  port_info       :  # Port IPs. Change according to your needs. In case of loopback, you can leave as is.
+    - dest_mac        :   [0xaa,0xaa,0xaa,0xaa,0xaa,0xaa]
+      src_mac         :   [0xaa,0xaa,0xaa,0xaa,0xaa,0xaa]
+    - dest_mac        :   [0xaa,0xaa,0xaa,0xaa,0xaa,0xaa]
+      src_mac         :   [0xaa,0xaa,0xaa,0xaa,0xaa,0xaa]
+    - ip         : 1.1.1.1
+      default_gw : 2.2.2.2
+    - ip         : 2.2.2.2
+      default_gw : 1.1.1.1
